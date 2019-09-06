@@ -21,39 +21,146 @@ class _DetailPageState extends State<DetailPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-//    _scrollController.addListener(onScroll);
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        print("duuslaa");
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scrollbar(
-      child: NotificationListener<ScrollNotification>(
-        onNotification: (ScrollNotification notification) {
-          double progress = notification.metrics.pixels /
-              notification.metrics.maxScrollExtent;
-          setState(() {
-            _progress = "${(progress * 100).toInt()}%";
-          });
-          print("BottomEdge: ${notification.metrics.extentAfter == 0}");
-        },
-        child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-            child: Stack(
-              alignment: Alignment.centerRight,
-              children: <Widget>[
-                ListView.builder(
-                    itemCount: 50,
-                    itemExtent: 50.0,
-                    itemBuilder: (context, index) {
-                      return Card(child: ListTile(title: Text("$index")));
-                    }),
-                CircleAvatar(
-                  radius: 30.0,
-                  child: Text(_progress),
-                  backgroundColor: Colors.black54,
-                ),
-              ],
-            )),
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "Мэдээний дэлгэрэнгүй",
+          style: TextStyle(color: Colors.red, fontSize: 15.0),
+        ),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Colors.red),
+            onPressed: () {}),
+        backgroundColor: Colors.white,
+        actions: <Widget>[
+          CircleAvatar(
+            radius: 20.0,
+            child: Text(
+              _progress,
+              style: TextStyle(fontSize: 10.0),
+            ),
+            backgroundColor: Colors.black54,
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        controller: _scrollController,
+        child: NotificationListener<ScrollNotification>(
+          onNotification: (ScrollNotification notification) {
+//            double progress = _scrollController.position.pixels /
+//                _scrollController.position.maxScrollExtent;
+//            setState(() {
+//              _progress = "${(progress * 100).toInt()}%";
+//            });
+            double progress = notification.metrics.pixels /
+                notification.metrics.maxScrollExtent;
+            setState(() {
+              _progress = "${(progress * 100).toInt()}%";
+              print(_progress);
+            });
+
+            if (notification.metrics.pixels ==
+                notification.metrics.maxScrollExtent) {
+              //
+              print("Buren unshsan!");
+            }
+          },
+          child: Column(
+//            alignment: Alignment.centerRight,
+            children: <Widget>[
+              Text(
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                  "Lorem Ipsum has been the industry's standard dummy text ever since the "
+                  "1500s, when an unknown printer took a galley of type and scrambled it "
+                  "to make a type specimen book. It has survived not only five centuries, "
+                  "but also the leap into electronic typesetting, remaining essentially unchanged. "
+                  "It was popularised in the 1960s with the release of Letraset sheets containing "
+                  "Lorem Ipsum passages, and more recently with desktop publishing software like "
+                  "Aldus PageMaker including versions of Lorem Ipsum."
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                  "Lorem Ipsum has been the industry's standard dummy text ever since the "
+                  "1500s, when an unknown printer took a galley of type and scrambled it "
+                  "to make a type specimen book. It has survived not only five centuries, "
+                  "but also the leap into electronic typesetting, remaining essentially unchanged. "
+                  "It was popularised in the 1960s with the release of Letraset sheets containing "
+                  "Lorem Ipsum passages, and more recently with desktop publishing software like "
+                  "Aldus PageMaker including versions of Lorem Ipsum."
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                  "Lorem Ipsum has been the industry's standard dummy text ever since the "
+                  "1500s, when an unknown printer took a galley of type and scrambled it "
+                  "to make a type specimen book. It has survived not only five centuries, "
+                  "but also the leap into electronic typesetting, remaining essentially unchanged. "
+                  "It was popularised in the 1960s with the release of Letraset sheets containing "
+                  "Lorem Ipsum passages, and more recently with desktop publishing software like "
+                  "Aldus PageMaker including versions of Lorem Ipsum."
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                  "Lorem Ipsum has been the industry's standard dummy text ever since the "
+                  "1500s, when an unknown printer took a galley of type and scrambled it "
+                  "to make a type specimen book. It has survived not only five centuries, "
+                  "but also the leap into electronic typesetting, remaining essentially unchanged. "
+                  "It was popularised in the 1960s with the release of Letraset sheets containing "
+                  "Lorem Ipsum passages, and more recently with desktop publishing software like "
+                  "Aldus PageMaker including versions of Lorem Ipsum."
+                  "to make a type specimen book. It has survived not only five centuries, "
+                  "but also the leap into electronic typesetting, remaining essentially unchanged. "
+                  "It was popularised in the 1960s with the release of Letraset sheets containing "
+                  "Lorem Ipsum passages, and more recently with desktop publishing software like "
+                  "Aldus PageMaker including versions of Lorem Ipsum."
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                  "Lorem Ipsum has been the industry's standard dummy text ever since the "
+                  "1500s, when an unknown printer took a galley of type and scrambled it "
+                  "to make a type specimen book. It has survived not only five centuries, "
+                  "but also the leap into electronic typesetting, remaining essentially unchanged. "
+                  "It was popularised in the 1960s with the release of Letraset sheets containing "
+                  "Lorem Ipsum passages, and more recently with desktop publishing software like "
+                  "but also the leap into electronic typesetting, remaining essentially unchanged. "
+                  "It was popularised in the 1960s with the release of Letraset sheets containing "
+                  "Lorem Ipsum passages, and more recently with desktop publishing software like "
+                  "Aldus PageMaker including versions of Lorem Ipsum."
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                  "Lorem Ipsum has been the industry's standard dummy text ever since the "
+                  "1500s, when an unknown printer took a galley of type and scrambled it "
+                  "to make a type specimen book. It has survived not only five centuries, "
+                  "but also the leap into electronic typesetting, remaining essentially unchanged. "
+                  "It was popularised in the 1960s with the release of Letraset sheets containing "
+                  "Lorem Ipsum passages, and more recently with desktop publishing software like"
+                  "Aldus PageMaker including versions of Lorem Ipsum."),
+
+//              ListView.builder(
+//                  shrinkWrap: true,
+//                  itemCount: 30,
+//                  itemExtent: 100.0,
+//                  itemBuilder: (context, index) {
+//                    return Container(
+//                        child: ListTile(
+//                            title: Container(
+//                      color: Colors.teal,
+//                      child: Text("$index"),
+//                    )));
+//                  }),
+//              Positioned(
+//                right: 10,
+//                top: 60,
+//                child: CircleAvatar(
+//                  radius: 30.0,
+//                  child: Text(_progress),
+//                  backgroundColor: Colors.black54,
+//                ),
+//              )
+            ],
+          ),
+        ),
       ),
     );
   }
